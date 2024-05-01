@@ -44,6 +44,7 @@ input{
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 0 rgba(144, 144, 144, 0.5);
+    border: none;
             
 }
 #input{
