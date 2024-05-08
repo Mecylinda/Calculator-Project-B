@@ -1,8 +1,15 @@
-const btnEl = document.querySelectorAll("button");
+const btnEl = document.querySelectorAll("button.function");
 
 const inputEl = document.getElementById("display");
+const turnOnBtn = document.getElementById("turnOn");
+const turnOffBtn = document.getElementById("turnOff");
 
-
+turnOnBtn.addEventListener("click", function(){
+ turnOnCalculator(); 
+});
+turnOffBtn.addEventListener("click", function(){
+ turnOffCalculator(); 
+});
 
 
 for (let i = 0; i < btnEl.length; i++) {
@@ -11,17 +18,21 @@ for (let i = 0; i < btnEl.length; i++) {
       
     if (buttonValue === "C") {
       clearResult();
-    }else if(buttonValue === "off") {
-  turnOffCalculator();
+
 } else if (buttonValue === "%") {
   calculatePercentage();
-} else if (buttonValue === "on") {
- turnOnCalculator();
+
 }else if (buttonValue === "=") {
       calculateResult();
     } else {
       appendValue(buttonValue);
     }
+  });
+}
+
+function toggleDisabled(value) {
+  btnEl.forEach((el) => {
+    el.disabled = value;
   });
 }
 
@@ -35,9 +46,8 @@ function appendValue(buttonValue) {
   inputEl.value += buttonValue;
 }
 function turnOffCalculator() {
- 
- 
-  inputEl.value = "";
+   inputEl.value = "";
+   toggleDisabled(true);
 }
 
 function calculatePercentage() {
@@ -47,5 +57,6 @@ function calculatePercentage() {
 }
 
 function turnOnCalculator() {
-  inputEl.disabled = false;
+  
+    toggleDisabled(false);
 }
