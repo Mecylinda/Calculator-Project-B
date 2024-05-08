@@ -11,7 +11,13 @@ for (let i = 0; i < btnEl.length; i++) {
       
     if (buttonValue === "C") {
       clearResult();
-    } else if (buttonValue === "=") {
+    }else if(buttonValue === "off") {
+  turnOffCalculator();
+} else if (buttonValue === "%") {
+  calculatePercentage();
+} else if (buttonValue === "on") {
+ turnOnCalculator();
+}else if (buttonValue === "=") {
       calculateResult();
     } else {
       appendValue(buttonValue);
@@ -27,4 +33,19 @@ function calculateResult() {
 }
 function appendValue(buttonValue) {
   inputEl.value += buttonValue;
+}
+function turnOffCalculator() {
+ 
+ 
+  inputEl.value = "";
+}
+
+function calculatePercentage() {
+  const currentValue = parseFloat(inputEl.value);
+  const percentageValue = currentValue * 0.01;
+  inputEl.value = percentageValue.toString();
+}
+
+function turnOnCalculator() {
+  inputEl.disabled = false;
 }
